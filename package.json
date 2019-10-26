@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "restful api",
+  "main": "server.js",
+  // 修改配置文件
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"   //直接 npm run server 启动服务器
+  },
+  "author": "Polaris",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
