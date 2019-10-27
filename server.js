@@ -2,8 +2,16 @@
 
 //  1. 引入express
 const express = require("express");
+//  引入mongoose
+const mongoose = require("mongoose");
 //  2. 实例化一个app
 const app = express();
+// DB config
+const db = require("./config/keys").mongoURI;
+// Connect to mongodb
+mongoose.connect(db)
+        .then(() => console.log("MongoDb Connected"))
+        .catch(err => console.log(err));
 //  3. 设置端口号
 const port = process.env.PORT || 5000;
 //  4. app.listen监听
