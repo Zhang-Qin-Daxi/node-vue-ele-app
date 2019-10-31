@@ -6,8 +6,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 //  2. 实例化一个app
 const app = express();
+// 引入users.js
+const users = require("./routes/api/users");
 // DB config
 const db = require("./config/keys").mongoURI;
+// 引入body-parse中间件
+const bodyParser = require("body-parser");
 // Connect to mongodb
 mongoose.connect(db)
         .then(() => console.log("MongoDb Connected"))
@@ -26,3 +30,9 @@ app.get("/",(req,res) => {
 // 全局安装 nodemon 不用每次重启
 // npm install nodemon -g
 
+// 使用router
+app.use('/api/users',users);
+
+// 使用bodyParser中间件
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
